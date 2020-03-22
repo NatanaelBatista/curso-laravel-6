@@ -2,28 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware([])->group(function () {
+Route::group([
 
-    Route::prefix('panel')->group(function () {
+    'middleware' => [],
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'name' => 'admin.'
+], function ()
+{
+    Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
 
-        Route::get('/dashboard', function () {
+    Route::get('/financeiro', 'TesteController@teste')->name('financ');
 
-            return 'Home Admin';
-        });
+    Route::get('/produtos', 'TesteController@teste')->name('products');
 
-        Route::get('/financeiro', function () {
+    Route::get('/', function ()
+    {
+        return redirect()->route('admin.dashboard');
 
-            return 'Financeiro Admin';
-        });
-
-        Route::get('/produtos', function () {
-
-            return 'Produtos Admin';
-        });
-
-        Route::get('/', function () {
-
-            return 'Admin';
-        });
-    });
+    })->name('home');
 });
