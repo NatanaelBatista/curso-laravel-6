@@ -2,10 +2,28 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::post('/contato', function () {
-    return 'Hello World';
-});
+Route::middleware([])->group(function () {
 
-Route::get('/', function () {
-    return 'Hello World';
+    Route::prefix('panel')->group(function () {
+
+        Route::get('/dashboard', function () {
+
+            return 'Home Admin';
+        });
+
+        Route::get('/financeiro', function () {
+
+            return 'Financeiro Admin';
+        });
+
+        Route::get('/produtos', function () {
+
+            return 'Produtos Admin';
+        });
+
+        Route::get('/', function () {
+
+            return 'Admin';
+        });
+    });
 });
