@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::resource('products', 'ProductController');
+
+/*
 Route::group([
 
     'middleware' => [],
@@ -22,3 +25,4 @@ Route::group([
 
     })->name('home');
 });
+*/
