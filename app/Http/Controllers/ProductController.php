@@ -31,18 +31,13 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\requests\StoreUpdateProductRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:255',
-            'description' => 'nullable|min:3|max:255',
-            'photo' => 'required'
-        ]);
+        dd('ok');
         
-        //dd($request->all());
         if ($request->file('photo')->isValid())
         {
             $nameFile = $request->name . '.' . $request->photo->extension();
